@@ -9,12 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{B389F8C2-986D-477E-B43E-2F9CD72A8BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{C338EEE6-C81D-492E-8897-6C939E7ECD2C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{4B3F26F0-5A72-450B-88D0-8D7B96237ED9}"
 	ProjectSection(SolutionItems) = preProject
 		database_configuration.md = database_configuration.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{76A7EF77-B7BE-4EE4-B157-E2E66A6A68A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,10 @@ Global
 		{B389F8C2-986D-477E-B43E-2F9CD72A8BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B389F8C2-986D-477E-B43E-2F9CD72A8BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B389F8C2-986D-477E-B43E-2F9CD72A8BC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C338EEE6-C81D-492E-8897-6C939E7ECD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C338EEE6-C81D-492E-8897-6C939E7ECD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C338EEE6-C81D-492E-8897-6C939E7ECD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C338EEE6-C81D-492E-8897-6C939E7ECD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A7EF77-B7BE-4EE4-B157-E2E66A6A68A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A7EF77-B7BE-4EE4-B157-E2E66A6A68A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A7EF77-B7BE-4EE4-B157-E2E66A6A68A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A7EF77-B7BE-4EE4-B157-E2E66A6A68A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

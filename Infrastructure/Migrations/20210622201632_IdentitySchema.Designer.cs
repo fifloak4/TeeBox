@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeeBox.Infrastructure;
 
 namespace TeeBox.Infrastructure.Migrations
 {
     [DbContext(typeof(GolfContext))]
-    partial class GolfContextModelSnapshot : ModelSnapshot
+    [Migration("20210622201632_IdentitySchema")]
+    partial class IdentitySchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,16 +178,7 @@ namespace TeeBox.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<short>("Hcp")
-                        .HasColumnType("smallint");
-
                     b.Property<short>("Number")
-                        .HasColumnType("smallint");
-
-                    b.Property<short>("Par")
                         .HasColumnType("smallint");
 
                     b.HasKey("Id");

@@ -1,8 +1,10 @@
-using TeeBox.Client.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,10 +13,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TeeBox.Domain;
 using TeeBox.Infrastructure;
-using Microsoft.AspNetCore.Identity;
+using WebUI.Areas.Identity;
+using WebUI.Data;
 
-namespace TeeBox.Client
+namespace WebUI
 {
     public class Startup
     {
@@ -30,11 +34,14 @@ namespace TeeBox.Client
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GolfContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("GolfDatabase")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("GolfDatabase")));
+            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<GolfContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
+            services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
         }
 
@@ -44,6 +51,7 @@ namespace TeeBox.Client
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
@@ -57,8 +65,12 @@ namespace TeeBox.Client
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

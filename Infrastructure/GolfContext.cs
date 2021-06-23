@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TeeBox.Domain;
 using TeeBox.Infrastructure.Extensions;
 
 namespace TeeBox.Infrastructure
 {
-    public class GolfContext : DbContext
+    public class GolfContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Hole> Holes { get; set; }
         public DbSet<Course> Courses { get; set; }
 
@@ -17,7 +17,8 @@ namespace TeeBox.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
+            base.OnModelCreating(modelBuilder);
         }
 
     }

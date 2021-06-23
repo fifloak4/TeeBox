@@ -1,0 +1,6 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [ "**/*.scss" ]
+  }
+]
