@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace TeeBox.Domain
 {
-    public class Tee
+    public class TeeColor
     {
-        public enum TeeColor { 
+        public int Id { get; set; }
+
+        public enum TeeColors
+        {
             White,
             Yellow,
             Blue,
             Red
         }
+        public TeeColors Color { get; set; }
 
-        public int Id { get; set; }
-
-        public TeeColor Color { get; set; }
-
-        public double Distance { get; set; }
+        public int CourseId { get; set; }
     }
 }

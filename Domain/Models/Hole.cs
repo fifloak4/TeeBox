@@ -10,8 +10,6 @@ namespace TeeBox.Domain
     {
         public int Id { get; set; }
 
-        public int CourseId { get; set; }
-
         public Int16 Number { get; set; }
 
         public Int16 Par { get; set; }

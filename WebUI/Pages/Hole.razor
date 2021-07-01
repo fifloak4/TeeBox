@@ -1,0 +1,42 @@
+﻿@page "/courses/{courseId}/hole/{number}"
+
+@using TeeBox.Domain.Records
+@using TeeBox.Application.Services.Interfaces
+
+@inject ICourseService CourseService
+
+<h2>Hole @hole.Id</h2>
+
+<p>Par: @hole.Par</p>
+<p>Number: @hole.Number</p>
+<p>Hcp: @hole.Hcp</p>
+
+<h3>Tees</h3>
+
+@foreach (var tee in tees)
+{
+    <p>Color: @Enum.GetName(typeof(TeeColor.TeeColors), tee.Color.Color)</p>
+    <p>Distance @tee.Tee.Distance m</p>
+}
+
+@code {
+    [Parameter]
+    public string Number { get; set; }
+
+    [Parameter]
+    public string CourseId { get; set; }
+
+
+    TeeBox.Domain.Hole hole = new TeeBox.Domain.Hole();
+
+    IEnumerable<TeeColorTee> tees = new List<TeeColorTee>();
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var teeHole = await CourseService.GetHoleAsync(int.Parse(CourseId), int.Parse(Number));
+        hole = teeHole.Hole;
+        tees = teeHole.Tees;
+    }
+
+}

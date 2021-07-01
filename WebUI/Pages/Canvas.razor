@@ -1,0 +1,40 @@
+﻿@page "/canvas"
+@using System.Text
+@using System.IO
+@using Svg
+@using System.Drawing
+@using System.Drawing.Imaging
+@using System.Xml
+@using TeeBox.Application.Services.Interfaces
+@using TeeBox.Infrastructure.Services.Interfaces
+
+@inject IMapService _mapService
+@inject IFileService _fileService
+
+
+<h1>Canvas</h1>
+
+
+<div class="hole-map">
+    @((MarkupString)svgMap)
+</div>
+
+<InputFile OnChange="@LoadFilesAsync"/>
+
+
+@code {
+
+    public string svgMap { get; set; }
+
+    protected override void OnInitialized()
+    {
+        var map = _mapService.ImportMap(@"C:\Users\fiflo\Desktop\Hole1-plain.svg");
+
+        svgMap = _mapService.GenerateSvg(map);
+    }
+
+    private async void LoadFilesAsync(InputFileChangeEventArgs e)
+    {
+        var file = await _fileService.SaveFileAsync(e.File, IFileService.FileType.Original);
+    }
+}

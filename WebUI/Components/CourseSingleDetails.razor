@@ -1,0 +1,31 @@
+﻿@using TeeBox.Application.Services.Interfaces
+
+@inject ICourseService CourseService
+
+<div class="course-details-background" @onclick="@Close">
+    <div class="pop-up">
+        <h3>@Course.Name</h3>
+        @foreach (var hole in holes)
+        {
+            <p>Hole no @hole.Number with par @hole.Par <a href="/courses/@Course.Id/hole/@hole.Number">Link</a></p>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    [Parameter] public Course Course { get; set; }
+
+    IEnumerable<Hole> holes = new List<Hole>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        holes = await CourseService.GetHoleListAsync(Course.Id);
+    }
+
+    public void Close()
+    {
+        OnClose.InvokeAsync();
+    }
+}

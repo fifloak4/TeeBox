@@ -1,6 +1,10 @@
 ﻿[
   {
-    "outputFileName": "wwwroot/css/bundle.css",
-    "inputFiles": [ "**/*.scss" ]
+    "inputFiles": [
+      "Styles/fonts.scss",
+      "Shared/main.scss",
+      "**/*.scss"
+    ],
+    "outputFileName": "Styles/bundle.scss"
   }
 ]

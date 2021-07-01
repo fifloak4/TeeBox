@@ -10,6 +10,8 @@ namespace TeeBox.Infrastructure
     {
         public DbSet<Hole> Holes { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Tee> Tees { get; set; }
+        public DbSet<TeeColor> TeeColors { get; set; }
 
         public GolfContext(DbContextOptions<GolfContext> options)
                 : base(options)
@@ -17,9 +19,8 @@ namespace TeeBox.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Seed();
+            modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

@@ -1,0 +1,62 @@
+﻿.hole-map {
+    width: 400px;
+}
+
+.green, .rocks, .trees,
+.path, .tee-marker, .tee,
+.pin, .rough-overlay, .bunker,
+.fairway, .wasteland, .rough,
+.water {
+    stroke: #000000;
+    stroke-width: 0.5px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1;
+    fill-opacity: 1;
+}
+
+
+g.green * {
+    fill: #5fca5f;
+}
+
+g.rocks * {
+    fill: #a07948;
+}
+
+g.trees * {
+    fill: #156013;
+}
+
+g.path * {
+    fill: #c8c4b7;
+}
+
+g.water * {
+    fill: #1010bd;
+}
+
+g.tee * {
+    fill: #35cc35;
+}
+
+g.pin * {
+    fill: #00ffff;
+}
+
+g.rough-overlay *,
+g.rough * {
+    fill: #028802;
+}
+
+g.bunker * {
+    fill: #eee895;
+}
+
+g.fairway * {
+    fill: #25ab25;
+}
+
+g.wasteland * {
+    fill: #e3e2db;
+}

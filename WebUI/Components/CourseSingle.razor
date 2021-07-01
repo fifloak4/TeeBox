@@ -1,0 +1,21 @@
+﻿<div class="course-container">
+    <h2>@Course.Name</h2>
+    @if (showCourseDetail)
+    {
+        <CourseSingleDetails Course=@Course OnClose="ShowHideDetails"/>
+    }
+    <button type="button" @onclick="ShowHideDetails">Details</button>
+</div>
+
+@code {
+
+    [Parameter]
+    public Course Course { get; set; }
+
+    bool showCourseDetail = false;
+
+    public void ShowHideDetails()
+    {
+        showCourseDetail = !showCourseDetail;
+    }
+}

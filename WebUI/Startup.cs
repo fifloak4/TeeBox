@@ -15,8 +15,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TeeBox.Domain;
 using TeeBox.Infrastructure;
+using TeeBox.Application;
 using WebUI.Areas.Identity;
-using WebUI.Data;
 
 namespace WebUI
 {
@@ -40,9 +40,12 @@ namespace WebUI
                 .AddEntityFrameworkStores<GolfContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddApplication();
+            services.AddFileService();
+
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,8 @@
+﻿$opensans-font-path: "../fonts/OpenSans";
+
+@font-face {
+    // This is parsed as a normal function call that takes a quoted string.
+    src: url("#{$opensans-font-path}/OpenSans-Regular.ttf") format('truetype');
+    font-family: "OpenSans";
+    font-weight: 400;
+}

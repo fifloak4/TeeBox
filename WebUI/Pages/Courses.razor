@@ -1,7 +1,25 @@
 ﻿@page "/courses"
 
-<h3>Courses</h3>
+@using TeeBox.Application.Services.Interfaces
+
+@inject ICourseService CourseService
+
+<div class="header">
+    <h1>Courses</h1>
+</div>
+<div class="container">
+@foreach (var course in courses)
+{
+    <CourseSingle Course=@course />
+}
+</div>
 
 @code {
 
+    IEnumerable<TeeBox.Domain.Course> courses = new List<TeeBox.Domain.Course>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        courses = await CourseService.GetCourseListAsync();
+    }
 }
