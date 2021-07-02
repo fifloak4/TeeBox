@@ -16,5 +16,7 @@ namespace TeeBox.Domain
 
         public Int16 Hcp { get; set; }
 
+        public int CourseId { get; set; }
+
     }
 }

@@ -15,9 +15,9 @@
 @code {
     [Parameter] public EventCallback OnClose { get; set; }
 
-    [Parameter] public Course Course { get; set; }
+    [Parameter] public CourseDTO Course { get; set; }
 
-    IEnumerable<Hole> holes = new List<Hole>();
+    IEnumerable<HoleDTO> holes = new List<HoleDTO>();
 
     protected override async Task OnParametersSetAsync()
     {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeeBox.Domain;
+using TeeBox.Domain.Enum;
 
 namespace TeeBox.Infrastructure.Seed
 {
@@ -28,126 +29,144 @@ namespace TeeBox.Infrastructure.Seed
                     Id = 1,
                     Number = 1,
                     Hcp = 8,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 2,
                     Number = 2,
                     Hcp = 14,
-                    Par = 3
+                    Par = 3,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 3,
                     Number = 3,
                     Hcp = 13,
-                    Par = 5
+                    Par = 5,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 4,
                     Number = 4,
                     Hcp = 16,
-                    Par = 3
+                    Par = 3,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 5,
                     Number = 5,
                     Hcp = 17,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 6,
                     Number = 6,
                     Hcp = 4,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 7,
                     Number = 7,
                     Hcp = 2,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 8,
                     Number = 8,
                     Hcp = 7,
-                    Par = 5
+                    Par = 5,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 9,
                     Number = 9,
                     Hcp = 6,
-                    Par = 3
+                    Par = 3,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 10,
                     Number = 10,
                     Hcp = 10,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 11,
                     Number = 11,
                     Hcp = 9,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 12,
                     Number = 12,
                     Hcp = 15,
-                    Par = 3
+                    Par = 3,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 13,
                     Number = 13,
                     Hcp = 3,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 14,
                     Number = 14,
                     Hcp = 1,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 15,
                     Number = 15,
                     Hcp = 5,
-                    Par = 5
+                    Par = 5,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 16,
                     Number = 16,
                     Hcp = 11,
-                    Par = 3
+                    Par = 3,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 17,
                     Number = 17,
                     Hcp = 18,
-                    Par = 4
+                    Par = 4,
+                    CourseId = 1
                 },
                 new Hole
                 {
                     Id = 18,
                     Number = 18,
                     Hcp = 12,
-                    Par = 5
+                    Par = 5,
+                    CourseId = 1
                 }
             );
 
@@ -156,25 +175,25 @@ namespace TeeBox.Infrastructure.Seed
                 new TeeColor
                 {
                     Id = 1,
-                    Color = TeeColor.TeeColors.White,
-                    CourseId = 1
+                    Color = TeeColors.White,
+                    CourseId = 1,
                 },
                 new TeeColor
                 {
                     Id = 2,
-                    Color = TeeColor.TeeColors.Yellow,
+                    Color = TeeColors.Yellow,
                     CourseId = 1
                 },
                new TeeColor
                {
                    Id = 3,
-                   Color = TeeColor.TeeColors.Blue,
+                   Color = TeeColors.Blue,
                    CourseId = 1
                },
                new TeeColor
                {
                    Id = 4,
-                   Color = TeeColor.TeeColors.Red,
+                   Color = TeeColors.Red,
                    CourseId = 1
                }
            );
@@ -187,7 +206,7 @@ namespace TeeBox.Infrastructure.Seed
                    Id = 1,
                    Distance = 356,
                    HoleId = 1,
-                   TeeColorId = 1
+                   TeeColorId = 1,
                },
                new Tee
                {

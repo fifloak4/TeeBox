@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeeBox.Domain;
-using TeeBox.Domain.DTO;
-using TeeBox.Domain.Records;
+using TeeBox.Domain.Models;
 
 namespace TeeBox.Application.Queries
 {
-    public record GetHoleByCourseQuery(int CourseId, int HoleNumber) : IRequest<HoleDTO>;
+    public record GetCurrentSvgMapQuery(int HoleId) : IRequest<SvgMap>;
 }

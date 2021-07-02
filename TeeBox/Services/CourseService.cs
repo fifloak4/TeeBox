@@ -7,37 +7,33 @@ using System.Threading.Tasks;
 using TeeBox.Application.Queries;
 using TeeBox.Application.Services.Interfaces;
 using TeeBox.Domain;
+using TeeBox.Domain.DTO;
 using TeeBox.Domain.Records;
 
 namespace TeeBox.Application.Services
 {
     public class CourseService : ICourseService
     {
-        private readonly IMediator _mediator;
+        private readonly IMediator mediator;
 
         public CourseService(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
-        public async Task<IEnumerable<Hole>> GetHoleListAsync(int courseId)
+        public async Task<IEnumerable<HoleDTO>> GetHoleListAsync(int courseId)
         {
-            return await _mediator.Send(new GetHoleListQuery(courseId));
+            return await mediator.Send(new GetHoleListQuery(courseId));
         }
 
-        public async Task<IEnumerable<Course>> GetCourseListAsync()
+        public async Task<IEnumerable<CourseDTO>> GetCourseListAsync()
         {
-            return await _mediator.Send(new GetCourseListQuery());
+            return await mediator.Send(new GetCourseListQuery());
         }
 
-        public async Task<HoleTeesColors> GetHoleAsync(int courseId, int holeNumber)
+        public async Task<HoleDTO> GetHoleAsync(int courseId, int holeNumber)
         {
-            return await _mediator.Send(new GetHoleByCourseQuery(courseId, holeNumber));
-        }
-
-        public async Task<Hole> GetHoleAsync(int holeId)
-        {
-            return await _mediator.Send(new GetHoleQuery(holeId));
+            return await mediator.Send(new GetHoleByCourseQuery(courseId, holeNumber));
         }
     }
 }

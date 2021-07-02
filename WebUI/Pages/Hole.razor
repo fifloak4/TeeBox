@@ -1,5 +1,7 @@
 ﻿@page "/courses/{courseId}/hole/{number}"
 
+@using TeeBox.Domain
+@using TeeBox.Domain.Enum
 @using TeeBox.Domain.Records
 @using TeeBox.Application.Services.Interfaces
 
@@ -13,10 +15,11 @@
 
 <h3>Tees</h3>
 
-@foreach (var tee in tees)
+@if(hole.HoleTees != null)
+@foreach (var tee in hole.HoleTees)
 {
-    <p>Color: @Enum.GetName(typeof(TeeColor.TeeColors), tee.Color.Color)</p>
-    <p>Distance @tee.Tee.Distance m</p>
+    <p>Color: @Enum.GetName(typeof(TeeColors), tee.Color)</p>
+    <p>Distance @tee.Distance m</p>
 }
 
 @code {
@@ -27,16 +30,11 @@
     public string CourseId { get; set; }
 
 
-    TeeBox.Domain.Hole hole = new TeeBox.Domain.Hole();
-
-    IEnumerable<TeeColorTee> tees = new List<TeeColorTee>();
-
+    HoleDTO hole = new();
 
     protected override async Task OnParametersSetAsync()
     {
-        var teeHole = await CourseService.GetHoleAsync(int.Parse(CourseId), int.Parse(Number));
-        hole = teeHole.Hole;
-        tees = teeHole.Tees;
+        hole = await CourseService.GetHoleAsync(int.Parse(CourseId), int.Parse(Number));
     }
 
 }

@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeeBox.Domain.Enum;
 
-namespace TeeBox.Domain
+namespace TeeBox.Domain.DTO
 {
-    public class TeeColor
+    public class CourseDTO
     {
         public int Id { get; set; }
 
-        public TeeColors Color { get; set; }
-
-        public int CourseId { get; set; }
+        public string Name { get; set; }
     }
 }

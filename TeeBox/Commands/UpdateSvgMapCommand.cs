@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeeBox.Domain;
+using TeeBox.Domain.Models;
 
-namespace TeeBox.Application.Queries
+namespace TeeBox.Application.Commands
 {
-    public record GetHoleQuery(int HoleId) : IRequest<Hole>;
-
-
+    public record UpdateSvgMapCommand(SvgMap Map) : IRequest<Unit>;
 }

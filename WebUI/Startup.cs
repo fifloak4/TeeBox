@@ -17,6 +17,7 @@ using TeeBox.Domain;
 using TeeBox.Infrastructure;
 using TeeBox.Application;
 using WebUI.Areas.Identity;
+using Serilog;
 
 namespace WebUI
 {
@@ -41,6 +42,7 @@ namespace WebUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddDomain();
             services.AddApplication();
             services.AddFileService();
 
@@ -62,6 +64,8 @@ namespace WebUI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

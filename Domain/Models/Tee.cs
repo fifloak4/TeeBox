@@ -15,5 +15,6 @@ namespace TeeBox.Domain
         public int TeeColorId { get; set; }
 
         public int HoleId { get; set; }
+
     }
 }
