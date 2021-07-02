@@ -23,33 +23,26 @@ namespace TeeBox.Application.Handlers
         public async Task<IEnumerable<HoleDTO>> Handle(GetHoleListQuery request, CancellationToken cancellationToken)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            /*var tees = context.Tees.Join(context.
-                            TeeColors
-                            .Where(t => t.CourseId == request.CourseId),
-                        tee => tee.TeeColorId,
-                        teeColor => teeColor.Id,
-                        (tee, teeColor) => mapper.Map<Tee, TeeColor, HoleTeeDTO>(tee, teeColor));
-
-            var list1 = await tees.ToListAsync();
-            */
             var tees = context.Tees.Join(context.
                             TeeColors
                             .Where(t => t.CourseId == request.CourseId),
                         tee => tee.TeeColorId,
                         teeColor => teeColor.Id,
-                        (tee, teeColor) => mapper.Map<Tee, TeeColor, HoleTeeDTO>(tee, teeColor));
-
-            var list1 = await tees.ToListAsync();
+                        (tee, teeColor) => mapper.Map<Tee, TeeColor, HoleTeeDTO>(tee, teeColor))
+                        .ToList() //Just EF Core things...
+                        .GroupBy(t => t.HoleId)
+                        .ToDictionary(a => a.Key, a => a.ToList());
 
             var holes = context
-                .Holes
-                .Where(h => h.CourseId == request.CourseId);
+                        .Holes
+                        .Where(h => h.CourseId == request.CourseId);
 
+            var result = new List<HoleDTO>();
 
+            foreach (var hole in holes)
+                result.Add(mapper.MergeInto<HoleDTO>(hole, tees[hole.Number]));
 
-            var list2 = await holes.ToListAsync();
-
-            return null;
+            return result;
         }
     }
 }
