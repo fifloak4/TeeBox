@@ -39,14 +39,14 @@ namespace TeeBox.Application.Handlers
                 .Distinct()
                 .SingleAsync(cancellationToken);
 
-            var tees = await _context
+            var tees = _context
                 .Tees
                 .Where(tee => tee.HoleId == hole.Id)
                 .Join(_context.TeeColors, 
                     tee => tee.TeeColorId,
                     teeColor => teeColor.Id,
                     (tee, teeColor) => new TeeColorTee(tee, teeColor))
-                .ToListAsync(cancellationToken);
+                .Select(t => t);
 
             return new HoleTeesColors(hole, tees);
         }

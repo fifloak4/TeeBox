@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeeBox.Domain.Records
 {
-    public record HoleTeesColors(Hole Hole, List<TeeColorTee> Tees);
+    public record HoleTeesColors(Hole Hole, IEnumerable<TeeColorTee> Tees);
 
     public record TeeColorTee(Tee Tee, TeeColor Color);
 }
