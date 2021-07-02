@@ -19,17 +19,15 @@ namespace TeeBox.Application.Handlers
     {
         public GetHoleListHandler(GolfContext context, IMapper mapper) : base(context, mapper) { }
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IEnumerable<HoleDTO>> Handle(GetHoleListQuery request, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            var tees = context.Tees.Join(context.
+            var tees = (await context.Tees.Join(context.
                             TeeColors
                             .Where(t => t.CourseId == request.CourseId),
                         tee => tee.TeeColorId,
                         teeColor => teeColor.Id,
                         (tee, teeColor) => mapper.Map<Tee, TeeColor, HoleTeeDTO>(tee, teeColor))
-                        .ToList() //Just EF Core things...
+                        .ToListAsync()) //Just EF Core things...
                         .GroupBy(t => t.HoleId)
                         .ToDictionary(a => a.Key, a => a.ToList());
 
