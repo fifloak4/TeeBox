@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using TeeBox.Application.Models.Map.Interfaces;
 
 namespace TeeBox.Application.Models.Map
 {
@@ -82,7 +77,7 @@ namespace TeeBox.Application.Models.Map
 
         private void SetRootAttributes(XmlElement root)
         {
-            root.SetAttribute("viewBox", $"0 0 {Convert.ToInt32(this.Width) + 1} {Convert.ToInt32(this.Height) + 1}");
+            root.SetAttribute("viewBox", $"0 0 {Convert.ToInt32(Width) + 1} {Convert.ToInt32(Height) + 1}");
         }
 
         private static XmlElement CreateRoot(XmlDocument doc)
@@ -90,7 +85,7 @@ namespace TeeBox.Application.Models.Map
             return doc.CreateElement("svg");
         }
 
-        private static void AddLayer(Layer layer ,XmlElement root, XmlDocument document)
+        private static void AddLayer(Layer layer, XmlElement root, XmlDocument document)
         {
             var green = layer?.GetXml(document) ?? null;
             if (green != null)

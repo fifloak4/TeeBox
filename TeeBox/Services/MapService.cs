@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Xml;
-using TeeBox.Application.Services.Interfaces;
 using TeeBox.Application.Models.Map;
-using System.IO;
+using TeeBox.Application.Services.Interfaces;
 
 namespace TeeBox.Application.Services
 {

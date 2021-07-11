@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TeeBox.Application.Commands;
@@ -22,12 +19,12 @@ namespace TeeBox.Application.Handlers
 
         public async Task<Unit> Handle(AddOriginalMapCommand request, CancellationToken cancellationToken)
         {
-            if(request.OriginalFile.Exists)
+            if (request.OriginalFile.Exists)
             {
-                var latestMap =  await context
+                var latestMap = await context
                     .OriginalMaps
-                    .Where(m => 
-                    m.HoleId == request.HoleId && 
+                    .Where(m =>
+                    m.HoleId == request.HoleId &&
                     m.NextId == null)
                     .SingleOrDefaultAsync(cancellationToken);
 
@@ -39,7 +36,7 @@ namespace TeeBox.Application.Handlers
                     PreviousId = latestMap?.Id
                 });
 
-                if(latestMap != null)
+                if (latestMap != null)
                     latestMap.NextId = newMap.Entity.Id;
 
                 await context.SaveChangesAsync(cancellationToken);

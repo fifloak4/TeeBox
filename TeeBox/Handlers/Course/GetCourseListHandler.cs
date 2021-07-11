@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TeeBox.Application.Handlers.Interfaces;
@@ -15,8 +12,8 @@ using TeeBox.Infrastructure;
 
 namespace TeeBox.Application.Handlers
 {
-    public class GetCourseListHandler : 
-        GolfContextHandler, 
+    public class GetCourseListHandler :
+        GolfContextHandler,
         IRequestHandler<GetCourseListQuery, IEnumerable<CourseDTO>>
     {
 
@@ -24,7 +21,7 @@ namespace TeeBox.Application.Handlers
                                     IMapper mapper) : base(context, mapper) { }
 
         public async Task<IEnumerable<CourseDTO>> Handle
-            (GetCourseListQuery request, 
+            (GetCourseListQuery request,
             CancellationToken cancellationToken)
         {
             var response = context.

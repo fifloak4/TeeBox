@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TeeBox.Domain.DTO
+﻿namespace TeeBox.Domain.DTO
 {
     public class CourseDTO
     {

@@ -1,17 +1,14 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TeeBox.Application.Handlers.Interfaces;
 using TeeBox.Application.Queries;
 using TeeBox.Domain;
 using TeeBox.Domain.DTO;
-using TeeBox.Domain.Records;
 using TeeBox.Infrastructure;
 
 namespace TeeBox.Application.Handlers

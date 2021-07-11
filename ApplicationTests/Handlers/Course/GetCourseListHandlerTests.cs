@@ -1,17 +1,14 @@
-﻿using NUnit.Framework;
-using TeeBox.Application.Handlers;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TeeBox.Domain;
-using Moq;
-using Microsoft.EntityFrameworkCore;
-using TeeBox.Infrastructure;
-using AutoMapper;
-using System.Threading;
 using TeeBox.Domain.DTO;
+using TeeBox.Infrastructure;
 
 namespace TeeBox.Application.Handlers.Tests
 {
@@ -21,7 +18,7 @@ namespace TeeBox.Application.Handlers.Tests
         public IMapper Mapper { get; set; }
 
         [SetUp()]
-        public void SetUp() 
+        public void SetUp()
         {
             var config = new MapperConfiguration(opts =>
             {
@@ -52,7 +49,7 @@ namespace TeeBox.Application.Handlers.Tests
 
                 GetCourseListHandler handler = new(context, Mapper);
 
-                List<CourseDTO> courses = 
+                List<CourseDTO> courses =
                     (await handler.Handle(new Queries.GetCourseListQuery(), cts.Token))
                     .ToList();
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 
 namespace TeeBox.Application.Models.Map
@@ -12,7 +8,7 @@ namespace TeeBox.Application.Models.Map
         public Layer(XmlElement node, bool keepStyle = false) : base(node, keepStyle)
         {
             var listElements = new List<Element>();
-            foreach(XmlElement childElement in node.ChildNodes)
+            foreach (XmlElement childElement in node.ChildNodes)
             {
                 try
                 {
@@ -39,7 +35,7 @@ namespace TeeBox.Application.Models.Map
         {
             var layer = document.CreateElement("g");
             base.AddAttributes(layer);
-            foreach(var elem in Elements)
+            foreach (var elem in Elements)
             {
                 var xmlElem = elem.GetXml(document);
                 layer.AppendChild(xmlElem);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TeeBox.Domain.Models
+﻿namespace TeeBox.Domain.Models
 {
     public class SvgMap
     {

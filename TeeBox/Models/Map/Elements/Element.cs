@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml;
 using TeeBox.Application.Models.Map.Interfaces;
 
 namespace TeeBox.Application.Models.Map
