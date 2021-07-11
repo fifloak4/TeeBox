@@ -17,10 +17,10 @@ namespace TeeBox.Application.Models.Map
 
         public string Definition { get; set; }
 #nullable enable
-        public override XmlElement GetXml(XmlDocument root, string? label = null)
+        public override XmlElement GetXml(XmlDocument document, string? label = null)
 #nullable disable
         {
-            var elem = root.CreateElement("path");
+            var elem = document.CreateElement("path");
             base.AddAttributes(elem);
             elem.SetAttribute("d", Definition);
             return elem;

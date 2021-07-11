@@ -40,5 +40,61 @@ namespace TeeBox.Application.Models.Map
         public double Width { get; set; }
 
         public double Height { get; set; }
+
+        public string GenerateSvg()
+        {
+            XmlDocument doc = new();
+            XmlElement root = CreateRoot(doc);
+            SetRootAttributes(root);
+
+            AddLayer(Rough, root, doc);
+            AddLayer(Wasteland, root, doc);
+            AddLayer(Fairways, root, doc);
+            AddLayer(Green, root, doc);
+            AddLayer(Bunkers, root, doc);
+            AddLayer(RoughOverlay, root, doc);
+            AddLayer(Pin, root, doc);
+            AddLayer(Tees, root, doc);
+            AddLayer(TeeMarkers, root, doc);
+            AddLayer(Water, root, doc);
+            AddLayer(Paths, root, doc);
+            AddLayer(Trees, root, doc);
+            AddLayer(Rocks, root, doc);
+
+            AddRoot(doc, root);
+
+            return XmlToString(doc);
+        }
+
+        private static string XmlToString(XmlDocument doc)
+        {
+            using var stringWriter = new StringWriter();
+            using var xmlTextWriter = XmlWriter.Create(stringWriter);
+            doc.WriteTo(xmlTextWriter);
+            xmlTextWriter.Flush();
+            return stringWriter.GetStringBuilder().ToString();
+        }
+
+        private static void AddRoot(XmlDocument doc, XmlElement root)
+        {
+            doc.AppendChild(root);
+        }
+
+        private void SetRootAttributes(XmlElement root)
+        {
+            root.SetAttribute("viewBox", $"0 0 {Convert.ToInt32(this.Width) + 1} {Convert.ToInt32(this.Height) + 1}");
+        }
+
+        private static XmlElement CreateRoot(XmlDocument doc)
+        {
+            return doc.CreateElement("svg");
+        }
+
+        private static void AddLayer(Layer layer ,XmlElement root, XmlDocument document)
+        {
+            var green = layer?.GetXml(document) ?? null;
+            if (green != null)
+                root.AppendChild(green);
+        }
     }
 }

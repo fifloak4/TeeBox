@@ -34,14 +34,14 @@ namespace TeeBox.Application.Models.Map
         }
         public IEnumerable<Element> Elements { get; set; }
 #nullable enable
-        public override XmlElement GetXml(XmlDocument root, string? label = null)
+        public override XmlElement GetXml(XmlDocument document, string? label = null)
 #nullable disable
         {
-            var layer = root.CreateElement("g");
+            var layer = document.CreateElement("g");
             base.AddAttributes(layer);
             foreach(var elem in Elements)
             {
-                var xmlElem = elem.GetXml(root);
+                var xmlElem = elem.GetXml(document);
                 layer.AppendChild(xmlElem);
             }
             return layer;

@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeeBox.Domain.Models;
 
 namespace TeeBox.Application.Commands
 {
-    public record UpdateSvgMapCommand(SvgMap Map) : IRequest<Unit>;
+    public record AddSvgMapCommand(FileInfo SvgFile, int OriginalId, int HoleId) : IRequest<Unit>;
 }

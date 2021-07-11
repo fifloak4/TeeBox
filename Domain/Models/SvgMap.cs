@@ -14,9 +14,9 @@ namespace TeeBox.Domain.Models
 
         public int OriginalId { get; set; }
 
-        public int PreviousId { get; set; }
+        public int? PreviousId { get; set; }
 
-        public int NextId { get; set; }
+        public int? NextId { get; set; }
 
         public int HoleId { get; set; }
 

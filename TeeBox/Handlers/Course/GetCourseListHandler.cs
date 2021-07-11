@@ -23,11 +23,9 @@ namespace TeeBox.Application.Handlers
         public GetCourseListHandler(GolfContext context,
                                     IMapper mapper) : base(context, mapper) { }
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<IEnumerable<CourseDTO>> Handle
             (GetCourseListQuery request, 
             CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             var response = context.
                 Courses.Select(c => c);

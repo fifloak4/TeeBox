@@ -1,4 +1,4 @@
-﻿@page "/courses/{courseId}/hole/{number}"
+﻿@page "/courses/{courseId}/hole/{number}/edit"
 
 @using TeeBox.Domain
 @using TeeBox.Domain.Enum
@@ -8,7 +8,7 @@
 @inject ICourseService CourseService
 @inject NavigationManager Navigation
 
-<h2>Hole @hole.Id</h2>
+<h2>Edit Hole with id: @hole.Id</h2>
 
 <p>Par: @hole.Par</p>
 <p>Number: @hole.Number</p>
@@ -16,7 +16,8 @@
 
 <h3>Tees</h3>
 
-<button @onclick="EditHole">Edit</button>
+<button @onclick="SaveHole">Save</button>
+
 
 @if(hole.HoleTees != null)
 @foreach (var tee in hole.HoleTees)
@@ -40,9 +41,9 @@
         hole = await CourseService.GetHoleAsync(int.Parse(CourseId), int.Parse(Number));
     }
 
-    protected void EditHole()
+    protected void SaveHole()
     {
-        Navigation.NavigateTo($"/courses/{CourseId}/hole/{Number}/edit");
+        Navigation.NavigateTo($"/courses/{CourseId}/hole/{Number}");
     }
 
 }

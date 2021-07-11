@@ -22,9 +22,9 @@ namespace TeeBox.Application.Models.Map
         public double R { get; set; }
 
 #nullable enable
-        public override XmlElement GetXml(XmlDocument root, string? label = null)
+        public override XmlElement GetXml(XmlDocument document, string? label = null)
         {
-            var elem = root.CreateElement("circle");
+            var elem = document.CreateElement("circle");
             base.AddAttributes(elem);
             elem.SetAttribute("cx", Cx.ToString());
             elem.SetAttribute("cy", Cy.ToString());
