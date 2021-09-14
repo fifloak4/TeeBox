@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,26 +22,17 @@ namespace TeeBox.Application.Handlers
         {
             if (request.OriginalFile.Exists)
             {
-                var latestMap = await context
-                    .OriginalMaps
-                    .Where(m =>
-                    m.HoleId == request.HoleId &&
-                    m.NextId == null)
-                    .SingleOrDefaultAsync(cancellationToken);
-
-                var newMap = context.Add(new OriginalMap()
+                await context.AddAsync(new OriginalMap()
                 {
                     File = request.OriginalFile.Name,
                     HoleId = request.HoleId,
-                    NextId = null,
-                    PreviousId = latestMap?.Id
-                });
-
-                if (latestMap != null)
-                    latestMap.NextId = newMap.Entity.Id;
+                }, cancellationToken);
 
                 await context.SaveChangesAsync(cancellationToken);
             }
+            else
+                throw new ArgumentException($"Original SVG file: {request.OriginalFile.FullName} doesn't exist.");
+
             return new Unit();
         }
     }
